@@ -2,7 +2,6 @@ pipeline {
     agent any
 
     environment {
-        REMOTE_SSH_CREDENTIALS_ID = 'Slave1'
         REMOTE_HOST = 'localhost'
         DOCKER_IMAGE = 'my-app:latest'
     }
