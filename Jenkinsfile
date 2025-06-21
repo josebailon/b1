@@ -39,6 +39,7 @@ pipeline {
                 echo 'Deploying Docker container to remote server...'
                 echo REMOTE_HOST
                 echo 'Antes'
+                echo env.REMOTE_SSH_CREDENTIALS_ID
                 sshagent([env.REMOTE_SSH_CREDENTIALS_ID]) {
                     sh """
                     ssh -o StrictHostKeyChecking=no ubuntu@${REMOTE_HOST} '
