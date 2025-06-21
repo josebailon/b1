@@ -25,7 +25,16 @@ pipeline {
             }
         }
 
+        stage('Build Docker Image') {
+            steps {
+                echo 'Building Docker image...'
+                script {
+                    docker.build(env.DOCKER_IMAGE)
+                }
+            }
+        }
 
+   
     }
 
     post {
