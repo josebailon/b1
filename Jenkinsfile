@@ -36,7 +36,7 @@ pipeline {
 
         stage('Deploy to Remote Server') {
             steps {
-                echo 'Deploying Docker container to remote server...'
+                echo 'Deploying Docker1 container to remote server...'
                 echo REMOTE_HOST
                 echo 'Antes'
                 echo env.REMOTE_SSH_CREDENTIALS_ID
