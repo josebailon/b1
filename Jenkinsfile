@@ -37,6 +37,7 @@ pipeline {
         stage('Deploy to Remote Server') {
             steps {
                 echo 'Deploying Docker container to remote server...'
+                echo 'A '${REMOTE_HOST}
                 sshagent([env.REMOTE_SSH_CREDENTIALS_ID]) {
                     sh """
                     ssh -o StrictHostKeyChecking=no ubuntu@${REMOTE_HOST} '
@@ -48,4 +49,9 @@ pipeline {
         }
     }
 
+    post {
+        always {
+            echo 'Pipeline completed1'
+        }
+    }
 }
