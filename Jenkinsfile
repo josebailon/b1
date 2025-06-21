@@ -34,12 +34,23 @@ pipeline {
             }
         }
 
-   
+        stage('Deploy to Remote Server') {
+            steps {
+                echo 'Deploying Docker container to remote server...'
+                sshagent([env.REMOTE_SSH_CREDENTIALS_ID]) {
+                    sh """
+                    ssh -o StrictHostKeyChecking=no ubuntu@${REMOTE_HOST} '
+                        docker run -d -p 80:80 ${env.DOCKER_IMAGE}
+                    '
+                    """
+                }
+            }
+        }
     }
 
     post {
         always {
-            echo 'Pipeline completed'
+            echo 'Pipeline completed1'
         }
     }
 }
