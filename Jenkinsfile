@@ -39,8 +39,8 @@ pipeline {
                 echo 'Deploying Docker container to remote server...'
                 echo REMOTE_HOST
                 echo 'Antes'
-                echo env.REMOTE_SSH_CREDENTIALS_ID
-                sshagent([env.REMOTE_SSH_CREDENTIALS_ID]) {
+                echo REMOTE_SSH_CREDENTIALS_ID
+                sshagent([REMOTE_SSH_CREDENTIALS_ID]) {
                     sh """
                     ssh -o StrictHostKeyChecking=no ubuntu@${REMOTE_HOST} '
                         docker run -d -p 80:80 ${env.DOCKER_IMAGE}
