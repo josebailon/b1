@@ -4,6 +4,7 @@ pipeline {
     environment {
         REMOTE_HOST = 'localhost'
         DOCKER_IMAGE = 'my-app:latest'
+        NOMBRE = 'midocker'
     }
 
     stages {
@@ -44,7 +45,8 @@ pipeline {
                 sshagent(['REMOTE_SSH_CREDENTIALS_ID']) {
                     sh """
                     ssh -o StrictHostKeyChecking=no ubuntu@${REMOTE_HOST} '
-                        docker run -d -p 80:8080 ${env.DOCKER_IMAGE}
+                        docker rm -f ${env.NOMBRE}
+                        docker run -d -p 80:8080 ${env.DOCKER_IMAGE} --name ${env.NOMBRE} 
                     '
                     """
                 }
