@@ -46,7 +46,7 @@ pipeline {
                     sh """
                     ssh -o StrictHostKeyChecking=no ubuntu@${REMOTE_HOST} '
                         docker rm -f ${env.NOMBRE}
-                        docker run -d -p 80:8080 ${env.DOCKER_IMAGE} --name ${env.NOMBRE} 
+                        docker run -d --name ${env.NOMBRE} -p 80:8080 ${env.DOCKER_IMAGE}
                     '
                     """
                 }
