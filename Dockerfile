@@ -1,5 +1,5 @@
 # Use an official Tomcat runtime as a parent image
-FROM tomcat:9.0.65-jdk11-openjdk
+FROM tomcat
 
 # Copy the WAR file to the webapps directory of Tomcat
 COPY target/webapp-tom.war /usr/local/tomcat/webapps/
