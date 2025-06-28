@@ -50,7 +50,7 @@ pipeline {
                     '
                     """
                 }
-                echo 'despues'
+                echo 'despued'
             }
         }
     }
